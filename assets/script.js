@@ -35,3 +35,22 @@ function weatherDashboard(searchCity){
       createRow(searchCity);
     }
     $("#today-weather").empty();
+
+    //create element and append it to dispaly today weather
+    var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
+    var imgtag = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+    var divCard = $("<div>").addClass("card");
+    var divcardBody = $("<div>").addClass("card-body");
+    var displayWind = $("<p>").addClass("card-text").text("Wind: " + data.wind.speed + " MPH");
+    var displayHumid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + " %");
+    var displayTemp = $("<p>").addClass("card-text").text("Temperature: " + data.main.temp + " K");
+    console.log(data);
+
+//append data
+    title.append(imgtag);
+    divcardBody.append(title, displayTemp, displayHumid, displayWind);
+    divCard.append(divcardBody);
+    $("#today-weather").append(divCard);
+    console.log(data);
+  });
+}
