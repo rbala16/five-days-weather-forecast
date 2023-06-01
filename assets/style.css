@@ -1,0 +1,19 @@
+body{
+  margin:20px;
+  
+}
+
+#forecast {
+  position: absolute;
+ 
+}
+
+h1 {
+  margin-bottom: 0%;
+  background-color: blue;
+}
+ul li {
+background-color: lightgrey;
+font-size: larger;
+font-family: 'Times New Roman', Times, serif;
+}
