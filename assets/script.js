@@ -19,6 +19,29 @@ $("#searchbtn").keypress(function(event){
 })
 
 
+//pull out search-history from local storage
+var previousWeatherSearch =JSON.parse(localStorage.getItem("previousWeatherSearch"))|| [];
+if(previousWeatherSearch.length>0){
+  weatherDashboard(previousWeatherSearch[previousWeatherSearch.length - 1]);
+
+}
+//display search history
+  for(var i = 0; i<previousWeatherSearch.length; i++){
+    createRow(previousWeatherSearch[i]);
+  }
+
+  function createRow(text){
+    var listItem = $("<li>").addClass("list-of-previous-search").text(text);
+    
+    $(".previousWeatherSearch").append(listItem);
+  
+
+  }
+  $(".previousWeatherSearch").on("click", "li", function () {
+    weatherDashboard($(this).text());
+    weatherForecast($(this).text());
+  });
+  
 
 //weatherDashboard function
 function weatherDashboard(searchCity){
